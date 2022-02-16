@@ -6,3 +6,6 @@ categories: OOP
 ---
 
 ### OOP 란?
+
+
+### SOLID
