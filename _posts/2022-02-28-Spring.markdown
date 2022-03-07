@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Spring (1)"
+title:  "Spring intro"
 date:   2022-02-28 23:29:50 +0900
-categories: OOP
+categories: Spring
 ---
 
 1. 객체 지향 설계와 스프링
