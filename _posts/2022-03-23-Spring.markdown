@@ -1,0 +1,33 @@
+---
+layout: post
+title:  "Spring(3) - SOLID와 스프링"
+date:   2022-03-23 23:29:50 +0900
+categories: Spring
+---
+
+## SOLID
+
+- SPR (single responsibility principle) : 하나의 클래스는 하나의 책임만 가진다 - 변경 시 파급력이 적다
+- OCP (open closed principle) : 확장에는 열려있으나 변경에 닫혀 있다 - 다형성의 활용, 
+- LSP (liskov substitution principle) : 프로그램의 정확성을 깨뜨리지 않으면서 하위 타입의 인스턴스로 바꿀 수 있어야 한다
+- ISP (interface segregation principle) : 특정 클라이언트를 위한 인터페이스 여러 개가 범용 인터페이스 하나보다 낫다 - 자동차 인터페이스를 운전 인터페이스와 정비 인터페이스로 분리한다
+- DIP (dependency inversion principle) : 구현 코드가 클라이언트를 바라보지 않고 역할(인터페이스)를 바라봐야 한다
+
+## 스프링 DI
+
+- 객체 지향의 핵심은 다형성이지만 다형성만으로는 OCP, DIP를 지킬 수 없다
+- DI 컨테이너를 통해 DI(의존성 주입)을 하여 OCP, DIP를 지킨다
+
+
+## 실무고민
+- 인터페이스를 도입하면 추상화라는 비용이 발생
+- 추상화가 장점만 있는 것이 아니다
+- 기능의 확장 가능성이 없다면 구체 클래스를 직접 사용한다
+
+
+
+
+### 참조 : [인프런] 스프링 핵심 원리
+
+
+
