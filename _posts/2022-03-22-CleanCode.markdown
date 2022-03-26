@@ -2,7 +2,7 @@
 layout: post
 title:  "Clean Code(1) - 좋은/니쁜 코드란"
 date:   2022-03-22 23:29:50 +0900
-categories: Clean Code
+categories: CleanCode
 ---
 
 ## 나쁜 코드란?
