@@ -108,20 +108,20 @@ export async function getPostList() {
     // 하드코딩된 포스트 목록 (실제로는 빌드 시 자동 생성해야 함)
     const posts = [
       {
-        slug: 'test-post',
-        title: 'Test Post',
+        slug: 'vibe/personal-blog-vibe-2',
+        title: '개인 블로그 vibe 해보기 (2) - 디버깅과 트러블슈팅',
         date: '2024-12-30',
-        tags: ['test'],
-        excerpt: 'This is a test post to check if the system works',
-        category: 'test'
+        tags: ['vibe', 'debugging', 'troubleshooting', '개발일지', '문제해결'],
+        excerpt: '블로그 구축 완료 후 만난 다양한 문제들과 Claude와 함께한 문제 해결 과정 기록',
+        category: 'vibe'
       },
       {
-        slug: 'welcome-to-my-blog',
-        title: 'Welcome to My Blog',
-        date: '2024-01-01',
-        tags: ['welcome', 'blog', 'vue'],
-        excerpt: '첫 번째 블로그 포스트에 오신 것을 환영합니다.',
-        category: 'general'
+        slug: 'vue/vue-blog-troubleshooting',
+        title: 'Vue 블로그 개발 중 만난 기술적 문제들과 해결 과정',
+        date: '2024-12-30',
+        tags: ['vue', 'troubleshooting', 'debugging', 'router', 'markdown'],
+        excerpt: 'Vue.js 기반 블로그 개발 과정에서 만난 다양한 기술적 이슈들과 해결 방법을 단계별로 정리',
+        category: 'vue'
       },
       {
         slug: 'vibe/personal-blog-vibe-1',
@@ -138,6 +138,22 @@ export async function getPostList() {
         tags: ['vue', 'vite', 'router', '개념정리'],
         excerpt: 'Vue 3 + Vite 환경에서 블로그 프로젝트를 위한 초기 설정과 핵심 개념들',
         category: 'vue'
+      },
+      {
+        slug: 'test-post',
+        title: 'Test Post',
+        date: '2024-12-30',
+        tags: ['test'],
+        excerpt: 'This is a test post to check if the system works',
+        category: 'test'
+      },
+      {
+        slug: 'welcome-to-my-blog',
+        title: 'Welcome to My Blog',
+        date: '2024-01-01',
+        tags: ['welcome', 'blog', 'vue'],
+        excerpt: '첫 번째 블로그 포스트에 오신 것을 환영합니다.',
+        category: 'general'
       }
     ]
 
