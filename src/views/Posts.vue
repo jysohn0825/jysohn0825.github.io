@@ -35,16 +35,34 @@
 </template>
 
 <script>
+import { getPostList } from '../utils/markdown.js'
+
 export default {
   name: 'Posts',
   data() {
     return {
-      posts: []
+      posts: [],
+      loading: true,
+      error: null
     }
   },
+  async created() {
+    await this.loadPosts()
+  },
   methods: {
+    async loadPosts() {
+      try {
+        this.loading = true
+        this.posts = await getPostList()
+      } catch (error) {
+        this.error = error.message
+        console.error('Error loading posts:', error)
+      } finally {
+        this.loading = false
+      }
+    },
     formatDate(date) {
-      return new Date(date).toLocaleDateString('en-US', {
+      return new Date(date).toLocaleDateString('ko-KR', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'

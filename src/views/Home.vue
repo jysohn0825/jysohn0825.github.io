@@ -17,10 +17,19 @@
       <section class="recent-posts">
         <h2>Recent Posts</h2>
         <div class="post-list">
-          <article class="post-preview">
+          <article v-for="post in recentPosts" :key="post.slug" class="post-preview">
+            <h3>
+              <router-link :to="`/posts/${post.slug}`">
+                {{ post.title }}
+              </router-link>
+            </h3>
+            <p class="post-meta">{{ formatDate(post.date) }}</p>
+            <p class="post-excerpt">{{ post.excerpt }}</p>
+          </article>
+          <div v-if="recentPosts.length === 0" class="post-preview">
             <h3>Coming Soon...</h3>
             <p class="post-meta">Stay tuned for upcoming posts!</p>
-          </article>
+          </div>
         </div>
         <router-link to="/posts" class="view-all-btn">View All Posts →</router-link>
       </section>
@@ -29,8 +38,37 @@
 </template>
 
 <script>
+import { getPostList } from '../utils/markdown.js'
+
 export default {
-  name: 'Home'
+  name: 'Home',
+  data() {
+    return {
+      recentPosts: []
+    }
+  },
+  async created() {
+    await this.loadRecentPosts()
+  },
+  methods: {
+    async loadRecentPosts() {
+      try {
+        const allPosts = await getPostList()
+        // 최근 3개 포스트만 표시
+        this.recentPosts = allPosts.slice(0, 3)
+      } catch (error) {
+        console.error('Error loading recent posts:', error)
+        this.recentPosts = []
+      }
+    },
+    formatDate(date) {
+      return new Date(date).toLocaleDateString('ko-KR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })
+    }
+  }
 }
 </script>
 
