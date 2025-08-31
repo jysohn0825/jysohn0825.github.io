@@ -1,6 +1,5 @@
 import { marked } from 'marked'
 import hljs from 'highlight.js'
-import matter from 'gray-matter'
 
 // Configure marked with highlight.js
 marked.setOptions({
@@ -13,16 +12,83 @@ marked.setOptions({
   gfm: true
 })
 
+// 브라우저 전용 프론트매터 파싱 함수
+function parseFrontmatter(content) {
+  const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/
+  const match = content.match(frontmatterRegex)
+  
+  if (!match) {
+    return {
+      data: {},
+      content: content
+    }
+  }
+  
+  const [, frontmatterStr, markdown] = match
+  const frontmatter = {}
+  
+  // 간단한 YAML 파싱 (기본적인 key: value 형태만)
+  frontmatterStr.split('\n').forEach(line => {
+    const trimmed = line.trim()
+    if (!trimmed || trimmed.startsWith('#')) return
+    
+    const colonIndex = trimmed.indexOf(':')
+    if (colonIndex === -1) return
+    
+    const key = trimmed.slice(0, colonIndex).trim()
+    let value = trimmed.slice(colonIndex + 1).trim()
+    
+    // 따옴표 제거
+    if ((value.startsWith('"') && value.endsWith('"')) || 
+        (value.startsWith("'") && value.endsWith("'"))) {
+      value = value.slice(1, -1)
+    }
+    
+    // 배열 형태 처리 (간단한 형태만)
+    if (value.startsWith('[') && value.endsWith(']')) {
+      value = value.slice(1, -1).split(',').map(item => 
+        item.trim().replace(/['"]/g, '')
+      )
+    }
+    
+    frontmatter[key] = value
+  })
+  
+  return {
+    data: frontmatter,
+    content: markdown
+  }
+}
+
 export async function parseMarkdownPost(slug) {
   try {
-    const response = await fetch(`/posts/${slug}.md`)
+    console.log('=== parseMarkdownPost called ===')
+    console.log('Original slug:', slug)
+    console.log('Type of slug:', typeof slug)
+    
+    // 간단하게 직접 경로 시도
+    const directUrl = `/posts/${slug}.md`
+    console.log('Direct URL:', directUrl)
+    
+    const response = await fetch(directUrl)
+    console.log('Response status:', response.status)
+    console.log('Response URL:', response.url)
+    
     if (!response.ok) {
-      throw new Error(`Post not found: ${slug}`)
+      console.error(`Failed to fetch ${directUrl}`)
+      throw new Error(`Post not found: ${slug} (Status: ${response.status})`)
     }
     
     const content = await response.text()
-    const { data: frontmatter, content: markdown } = matter(content)
+    console.log('Post content loaded, length:', content.length)
+    console.log('Content preview:', content.substring(0, 100) + '...')
+    
+    const { data: frontmatter, content: markdown } = parseFrontmatter(content)
+    console.log('Parsed frontmatter:', frontmatter)
+    console.log('Markdown length:', markdown.length)
+    
     const html = marked(markdown)
+    console.log('HTML generated, length:', html.length)
     
     return {
       frontmatter,
@@ -30,7 +96,9 @@ export async function parseMarkdownPost(slug) {
       slug
     }
   } catch (error) {
+    console.error('=== Error in parseMarkdownPost ===')
     console.error('Error parsing markdown:', error)
+    console.error('Stack:', error.stack)
     throw error
   }
 }
@@ -40,6 +108,14 @@ export async function getPostList() {
     // 하드코딩된 포스트 목록 (실제로는 빌드 시 자동 생성해야 함)
     const posts = [
       {
+        slug: 'test-post',
+        title: 'Test Post',
+        date: '2024-12-30',
+        tags: ['test'],
+        excerpt: 'This is a test post to check if the system works',
+        category: 'test'
+      },
+      {
         slug: 'welcome-to-my-blog',
         title: 'Welcome to My Blog',
         date: '2024-01-01',
@@ -48,7 +124,7 @@ export async function getPostList() {
         category: 'general'
       },
       {
-        slug: 'vibe/개인-블로그-vibe-해보기-1',
+        slug: 'vibe/personal-blog-vibe-1',
         title: '개인 블로그 vibe 해보기 (1)',
         date: '2024-12-30',
         tags: ['vibe', '블로그', '개발일지', 'vue', 'github-pages'],
@@ -56,7 +132,7 @@ export async function getPostList() {
         category: 'vibe'
       },
       {
-        slug: 'vue/vue-초기-설정-개념-temp',
+        slug: 'vue/vue-initial-setup-concepts',
         title: 'Vue 초기 설정 개념 (temp)',
         date: '2024-12-30',
         tags: ['vue', 'vite', 'router', '개념정리'],
