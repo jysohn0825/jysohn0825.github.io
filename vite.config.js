@@ -23,7 +23,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: ['vue', 'vue-router'],
-          markdown: ['marked', 'highlight.js', 'gray-matter']
+          markdown: ['marked', 'highlight.js']
         }
       }
     }
