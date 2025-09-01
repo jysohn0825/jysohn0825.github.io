@@ -1,6 +1,6 @@
 ---
 title: "Welcome to My Blog"
-date: "2024-01-01"
+date: "2025-08-30"
 tags: ["welcome", "blog", "vue"]
 excerpt: "첫 번째 블로그 포스트에 오신 것을 환영합니다."
 ---

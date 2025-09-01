@@ -1,6 +1,6 @@
 ---
 title: "개인 블로그 vibe 해보기 (1)"
-date: "2024-12-30"
+date: "2025-08-30"
 tags: ["vibe", "블로그", "개발일지", "vue", "github-pages"]
 excerpt: "Vue.js로 Jekyll 스타일의 개인 블로그를 구축하는 여정을 기록한 첫 번째 포스트"
 ---

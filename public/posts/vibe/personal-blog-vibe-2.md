@@ -1,6 +1,6 @@
 ---
 title: "개인 블로그 vibe 해보기 (2) - 디버깅과 트러블슈팅"
-date: "2024-12-30"
+date: "2025-08-31"
 tags: ["vibe", "debugging", "troubleshooting", "개발일지", "문제해결"]
 excerpt: "블로그 구축 완료 후 만난 다양한 문제들과 Claude와 함께한 문제 해결 과정 기록"
 ---

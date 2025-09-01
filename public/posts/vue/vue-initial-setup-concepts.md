@@ -1,6 +1,6 @@
 ---
 title: "Vue 초기 설정 개념 (temp)"
-date: "2024-12-30"  
+date: "2025-08-30"  
 tags: ["vue", "vite", "router", "개념정리"]
 excerpt: "Vue 3 + Vite 환경에서 블로그 프로젝트를 위한 초기 설정과 핵심 개념들"
 ---

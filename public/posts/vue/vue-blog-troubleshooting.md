@@ -1,6 +1,6 @@
 ---
 title: "Vue 블로그 개발 중 만난 기술적 문제들과 해결 과정"
-date: "2024-12-30"
+date: "2025-08-31"
 tags: ["vue", "troubleshooting", "debugging", "router", "markdown"]
 excerpt: "Vue.js 기반 블로그 개발 과정에서 만난 다양한 기술적 이슈들과 해결 방법을 단계별로 정리"
 ---
