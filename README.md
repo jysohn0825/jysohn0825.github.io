@@ -1,31 +1,12 @@
-# homepage
+### TODO
 
-This template should help get you started developing with Vue 3 in Vite.
+- [ ] 자동으로 작성 된 글들 내 언어로 다시 바꾸기
+- [ ] 그라운드 룰 정의해보기
+  - [ ] 디자인 가이드
+  - [ ] 초안 작성 시 확인
+    - [ ] 맞춤범
+    - [ ] 출처
+    - [ ] +a
+- [ ] seo 잘 되게 확인해보기
+- [ ] 테그 정리
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-# jysohn0825.github.io
-blog
